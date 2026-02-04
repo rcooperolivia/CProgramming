@@ -21,7 +21,34 @@ int main(void){
 
     // get number of elements 
     cout << "v2 size: " << v2.size() << endl;
-    cout << "v3 size: " << v.size() << endl;
+    cout << "v size: " << v.size() << endl;
+
+    // first and last elements 
+    cout << "v2 first: " << v2.front() << endl;
+    cout << "v2 last: " << v2.back() << endl;
+
+    // add to end of vector
+    v2.push_back(10);
+    print(v2);
+
+    // remove the last element
+    v3.pop_back();
+
+    // iterators - objects that point 2 certain locations in the vector
+    // begin() points to the first element in a vector
+    // end() points to the one past the last element
+    cout << *v2.begin() << endl;
+
+    // insert (location {iterator}, value)
+    v2.insert(v2.begin()+1, 1000);
+    print(v2);
+
+    // insert 500 between 5 and 6
+    v2.insert(v2.end()-2, 500);
+    print(v2);
+
+
+
 
 
     return 0;
