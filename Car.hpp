@@ -12,6 +12,9 @@ using namespace std;
 // void refuel(double gallons);
 // void drive (double distance);
 
+#ifndef CAR_HPP
+#define CAR_HPP
+
 class Car{
     public:
     // no-arg constructor
@@ -22,23 +25,17 @@ class Car{
     void setYear(int new_year);
     void setMPG(double new_mpg);
 
-    //get methods
-    string getMake();
-    string getModel();
-    int getYear();
-    double getMPG();
+    //get methods (these are normally constant)
+    string getMake() const;
+    string getModel() const;
+    int getYear() const;
+    double getMPG() const;
 
     // Class methods
-    void print_info();
+    void print_info() const;
 
-    private:
-        string make;
-        string model;
-        int year;
-        double mpg;
-};
-
-void Car::setMake(const string& new_make){
+    struct Car(const string& make, const string& model, int year, double mpg);
+    void Car::setMake(const string& new_make){
     if (!new_make.empty()){
         make = new_make;
     }
@@ -76,3 +73,13 @@ Car::Car(){//everywhere i go... they haunt me
         cout << year << endl;
         cout << mpg << endl;
     }
+    
+
+    private:
+        string make;
+        string model;
+        int year;
+        double mpg;
+};
+
+#endif
