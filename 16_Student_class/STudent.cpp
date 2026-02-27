@@ -1,31 +1,32 @@
 #include <iostream>
 #include <string>
+#include "Student.hpp"
 using namespace std;
 
 
-
-class Student {
-    private: 
-
-    public:
-    string name;
-    double gpa;
-
-    static int total_students;
-    Student(const string& n, double g): name(n),gpa(g){
-        total_students++;
-    }
-};
-
 //intialize static data member (REQUIRED)
 int Student::total_students = 0;
+int Student::next_id = 1000;
 
-int main(void){
-    cout << "Total students: " << Student::total_students << endl;
-    Student("Mark", 3.4);
-    Student("Anna", 3.0);
-    cout << "Total students: " << Student::total_students << endl;
-
-
-    return 0;
+void Student::print() const{
+    cout << '\n';
+    cout << "ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "GPA: " << gpa << endl;
+    cout << '\n';
 }
+
+Student::Student(const string& n, double g): name(n),gpa(g){
+        total_students++;
+        id = "U0000" + to_string(next_id);
+        next_id += 5;
+    }
+
+int Student::getTotalStudents(){
+    return total_students;
+}
+
+    static void setGraduationRequirement(double newGPA){
+        .
+    }
+
