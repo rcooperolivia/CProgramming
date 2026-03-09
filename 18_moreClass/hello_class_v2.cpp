@@ -1,67 +1,66 @@
 #include <iostream>
 #include <string>
-using namespace std;
-
-
-class Hello{
+class Hello {
     public:
-    // no arg constructor
+    // No arg constructor
     Hello() : size(0), messages(nullptr) {
-        cout << "No arg constructor for " << this << endl;
+        std::cout << "No arg constructor for " << this << std::endl;
     }
 
-    // new constructor!! w/ args
-    Hello(int n) : size(n){
-        cout << "Argument constructor for " << this << endl;
-        messages = new string[size];
-        // initialize values
-        for (int i = 0; i < size; i++){
-            messages[i] = (i%2) ? "Welcome" : "Not welcome";
+    // Constructor with arguments
+    Hello(int n) : size(n) {
+        std::cout << "Argument constructor for " << this << std::endl;
+    messages = new std::string[size];
+
+    // Initialize a dynamic array
+    for (int i = 0; i < size; i++) {
+        messages[i] = (i % 2) ? "Welcome!" : "Not welcome!";
+    }
+
+    //copy constructor
+    Hello(const Hello& other){
+        size=other.size;
+        //allocate new memory 
+        messages = new std::string[size];
+        //copy the values
+        for (int i - 0; i < size; i++){
+            messages[i] = other.messages[i];
         }
+        std::cout << "Copy constructor for " << this << std::endl;
     }
 
-    
-    //DESTRUCTOR LET GO
-    ~Hello(){
-        //always is ~Name(void)
-        cout << "Destructor for " << this << endl;
-        if (messages != nullptr){
+
+    }
+    // Destructor
+    ~Hello() {
+        std::cout << "Destructor for " << this << std::endl;
+        if (messages) {
             delete [] messages;
         }
-    }
 
+    }
     void bye() const {
-        cout << "Bye!!!\n";
+        std::cout << "Bye!!!\n";
     }
 
     private:
-    string* messages;
+    std::string* messages;
     int size;
 };
-
-int main(void){
-    // Create hello object dynamically
-    Hello* hi = new Hello;
-
-    // call bye method
-    hi->bye();
-
-    // new obj with arg constructor
-    Hello* hi2 = new Hello(12);
-
-
-    // reallocate memory
-    delete hi;
-    delete hi2;
-
-    // make for loop
-    // for (int i = 0; i < 100; i++){
-    //     Hello h(999999);
-    //     //delete h;
-    // }
-    
-    Hello hi3(10);
-    Hello hi4 = hi3;
-    
-    return 0;
+int main(void) {
+// Create Hello object dynamically
+Hello* hi = new Hello;
+// Call bye method
+hi->bye();
+// Create an object with argument constructor
+Hello* hi2 = new Hello(10);
+// Deallocate the memory
+delete hi;
+delete hi2;
+// for (int i = 0; i < 100; i++) {
+// Hello(9999999);
+// }
+Hello hi3(20);
+Hello hi4 = hi3;
+return 0;
 }
