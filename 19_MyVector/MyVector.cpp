@@ -1,43 +1,36 @@
+#include "MyVector.hpp"
+#include <iostream>
 
-//implementation file
-#include"MyVector.hpp"
-#include<iostream>
-using namespace std;
-//constructor 
-MyVector::MyVector(int capacity){
-    size = 0;
+MyVector::MyVector(int capacity) {
     this->capacity = capacity;
+    size = 0;
     elements = new int[capacity];
 }
 
-//destructor
-MyVector::~MyVector(){
-    delete [] elements;
-}
-
-//copy constructor
-MyVector::MyVector(const MyVector& other){
-    size = other.size;
+// Copy constructor
+MyVector::MyVector(const MyVector& other) {
     capacity = other.capacity;
+    size = other.size;
     elements = new int[capacity];
-    for (int i=0; i<size;i++){
+    for(int i = 0; i < size; i++) {
         elements[i] = other.elements[i];
     }
 }
 
+MyVector::~MyVector() {
+    delete [] elements;
+}
 
-    //print method
-    void MyVector::print() const{
-        cout << "[ ";
-        for (int i=0; i<size;i++){
-            cout<< elements[i];
-        }
-        cout << " ]";
+void MyVector::print() const {
+    std::cout << "[ ";
+    for (int i = 0; i < size; i++) {
+        std::cout << elements[i] << ' ';
     }
-    
-    //pushback
-    void MyVector::push_back(int val){
-        //consider case when vector is full
-        elements[size] = val;
-        size++;
-    }
+    std::cout << "]\n";
+}
+
+void MyVector::push_back(int val) {
+    // TODO consider the case when the vector is full
+    elements[size] = val;
+    size++;
+}

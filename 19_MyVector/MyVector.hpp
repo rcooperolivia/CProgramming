@@ -1,29 +1,21 @@
 #ifndef MYVECTOR_HPP
 #define MYVECTOR_HPP
 
-class MyVector{
-    public:
-    //constructor
+class MyVector {
+public:
     MyVector(int capacity = 10);
-
-    //destructor
-    ~MyVector();
-
-    
-    //copy constructor
     MyVector(const MyVector& other);
 
-    //print method
+    // Destructor
+    ~MyVector();
+
     void print() const;
+    void push_back(int val);    // Add the new element at the end
 
-    //pushback
-    void push_back(int val);
-
-    private:
-    int * elements; // dynamic array
-    int size; //current number of elements
-    int capacity; // maximum number of elements in an array
+private:
+    int* elements;      // An array of integers
+    int size;           // The current number of elements
+    int capacity;       // The max number of elements in the array
 };
-
 
 #endif
