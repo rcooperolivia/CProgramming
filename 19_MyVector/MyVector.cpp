@@ -30,7 +30,12 @@ void MyVector::print() const {
 }
 
 void MyVector::push_back(int val) {
-    // TODO consider the case when the vector is full
-    elements[size] = val;
-    size++;
+    if (size == capacity){
+        std::cout << "You have reached Capacity" << std::endl;
+    }
+    else{    // TODO consider the case when the vector is full
+        elements[size] = val;
+        size++; 
+    }
+
 }
