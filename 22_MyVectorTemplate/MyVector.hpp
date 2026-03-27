@@ -12,7 +12,7 @@ public:
     ~MyVector();
 
     void print() const;
-    void push_back(T& val);    // Add the new element at the end
+    void push_back(const T& val);    // Add the new element at the end
     T pop_back();             // Removes the last element and returns its value
     
     bool empty() const;
@@ -25,7 +25,7 @@ public:
     void insert(int pos, const T& value);
 
 private:
-    T* elements;      // An array of generic type
+    T* elements;      // An array of integers
     int size;           // The current number of elements
     int capacity;       // The max number of elements in the array
 
@@ -35,4 +35,5 @@ private:
 };
 
 #include "MyVector.tpp"
+
 #endif

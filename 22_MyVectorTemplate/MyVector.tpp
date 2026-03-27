@@ -55,7 +55,6 @@ void MyVector<T>::allocateMemory(int memory_size) {
     capacity = memory_size;
     // Save the old address of the array
     T* old_array = elements;
-    // Allocate new memory
     elements = new T[capacity];
 
     // Copy the elements
