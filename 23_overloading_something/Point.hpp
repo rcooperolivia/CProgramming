@@ -1,5 +1,6 @@
 #ifndef POINT_HPP
 #define POINT_HPP
+#include <string>
 
 class Point{
     public:
@@ -9,7 +10,17 @@ class Point{
     bool operator==(const Point& other);
     bool operator!=(const Point& other);
 
+    //operator bracket
     int& operator[](int index);
+
+    // //aritmetic operator
+    // Point operator+(const Point& other) const;
+
+    //Arithmatic assignmemt operator
+    Point& operator+=(const Point& other) const;
+
+    //to string
+    std::string toString() const;
 
     private:
     int x, y;

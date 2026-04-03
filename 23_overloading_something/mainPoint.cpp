@@ -20,5 +20,14 @@ int main(void){
 
     cout<< "MQ9\n";
 
+    cout <<p3.toString() << endl;
+
+    // Point p4 = p1 + p2;
+
+    // cout <<p4.toString() << endl;
+
+    (p3 += p1) += p2;
+    cout <<p3.toString() << endl;
+
     return 0;
 }
