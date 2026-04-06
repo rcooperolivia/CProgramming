@@ -1,33 +1,28 @@
 #include "Point.hpp"
-using namespace std;
 #include <iostream>
 
-int main(void){
-    Point p1(3,4);
-    Point p2(5,4);
-    Point p3(81,82);
+int main(void) {
+    Point p1(3, 4);
+    Point p2(5, 4);
+    Point p3(81, 82);
 
-    //compare 2 points
-    if (p1.operator!=(p2)){
-        cout<< (char) p3[1];// <<endl;
-    }
-    else{
-        cout << (char) p3[0];// << endl;
-    }
+    std::cout << "p3 " << p3.toString() << std::endl;
+    
+    Point p4 = p1 + p2;
+    
+    std::cout << "p4 " << p4.toString() << std::endl;
+    
+    
+    int x = 1;
+    (x += 2) += 5;
+    std::cout << x << std::endl;
+    
+    (p4 += p1) += p2;
+    std::cout << "p4 " << p4.toString() << std::endl;
+    
+    p3 = p4++;
+    std::cout << "p3 " << p4.toString() << std::endl;
 
-    p1[0] = 70 -17;
-    cout << (char) p1[0];
-
-    cout<< "MQ9\n";
-
-    cout <<p3.toString() << endl;
-
-    // Point p4 = p1 + p2;
-
-    // cout <<p4.toString() << endl;
-
-    (p3 += p1) += p2;
-    cout <<p3.toString() << endl;
 
     return 0;
 }
