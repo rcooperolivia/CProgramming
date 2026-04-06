@@ -1,6 +1,29 @@
 #include "Point.hpp"
+#include <cstring>
+#include <iostream>
 
-Point::Point(int x, int y) : x(x), y(y) {
+Point::Point(int x, int y, const char* new_tag) : x(x), y(y) {
+    if (new_tag){
+        int size = strlen(new_tag);
+        tag = new char[size + 1];
+        strcpy(tag, new_tag);
+    }
+    else{
+        tag = nullptr;
+    }
+
+}
+Point::Point(const Point& other) {
+    x = other.x;
+    y == other.y;
+    if (other.tag){
+        int size = strlen(other.tag);
+        tag = new char[size + 1];
+        strcpy(tag, other.tag);
+    }
+    else{
+        tag = nullptr;
+    }
 
 }
 
@@ -18,7 +41,11 @@ int& Point::operator[](int index) {
 
 
 std::string Point::toString() const {
-    return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+    if (tag) {
+        s += std::string(tag);
+    }
+    return s + "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+    
 }
 
 Point Point::operator+(const Point& other) const {
@@ -78,3 +105,45 @@ Point& Point::operator-=(const Point& other){
     *this = *this - other;
     return *this;
 } // TODO
+
+
+//destructor
+~Point::Point(){
+    if (tag){
+        delete [] tag;
+    }
+}
+
+
+//assignmemt operator
+Point& Point::operator=(const Point& other){
+    x = other.x;
+    y == other.y;
+    if (other.tag){
+        int size = strlen(other.tag);
+        tag = new char[size + 1];
+        strcpy(tag, other.tag);
+    }
+    else{
+        tag = nullptr;
+    }
+}
+
+
+std::ostream operator<<(std::ostream& out, const Point& p){
+    out << p.toString();
+    return out;
+}
+
+//friend method 
+friend std::istream operator>>(std::istream& in, Point& p){
+    std::cout<< "Enter x, y, tag ";
+    in >> p.x;
+    in >> p.y;
+    //TODO get tag
+    if (p.tag){
+        delete [] tag;
+    }
+    return in;
+}
+
