@@ -1,32 +1,40 @@
 #ifndef POINT_HPP
 #define POINT_HPP
+
 #include <string>
 
-class Point{
-    public:
+class Point {
+public:
     Point(int x = 0, int y = 0);
-
-    //relational operators
+    
+    // Relational operators
     bool operator==(const Point& other);
     bool operator!=(const Point& other);
 
-    //operator bracket
+    // Operator []
     int& operator[](int index);
 
-    // //aritmetic operator
-    // Point operator+(const Point& other) const;
+    // Arithmetic operators
+    Point operator+(const Point& other) const;
+    Point operator*(const Point& other) const; // TODO (can you use + ?)
+    Point operator-(const Point& other) const; // TODO
 
-    //Arithmatic assignmemt operator
-    Point& operator+=(const Point& other) const;
+    // Arithmetic assignment operators
+    Point& operator+=(const Point& other);
+    Point& operator*=(const Point& other); // TODO
+    Point& operator-=(const Point& other); // TODO
 
-    //to string
+    // Preincrement operator
+    Point operator++();
+    
+    //Postincrement
+    Point operator++(int);
+
     std::string toString() const;
 
-    private:
+
+private:
     int x, y;
 };
-
-
-
 
 #endif
