@@ -54,3 +54,27 @@ Point Point::operator++() {
 Point Point::operator++(int) {
     return Point(x++, y++);
 }
+
+Point Point::operator*(const Point& other) const{
+    for (i= 0; i< other.y; i++){
+        y= y + y;
+    } 
+    for (i= 0; i< other.x; i++){
+        x= x + x;
+    } 
+    return *this;
+} // TODO (can you use + ?)
+
+Point Point::operator-(const Point& other) const{
+    return Point(x - other.x, y - other.y);
+} // TODO
+
+Point& Point::operator*=(const Point& other){
+    *this = *this * other;
+    return *this;
+} // TODO
+
+Point& Point::operator-=(const Point& other){
+    *this = *this - other;
+    return *this;
+} // TODO
