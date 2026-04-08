@@ -107,6 +107,15 @@ std::istream& operator>>(std::istream& in, Point& p) {
     in >> p.x;
     in >> p.y;
     // TODO get the tag
+    if (p.tag){
+        delete [] p.tag;
+    }
+    std::string new_tag;
+    in >> new_tag;
+    int size = new_tag.length();
+    p.tag = new char[size + 1];
+    strcpy(p.tag, new_tag.c_str());
+    //end TODO
 
     return in;
 }
