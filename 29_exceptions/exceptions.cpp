@@ -1,5 +1,19 @@
 #include <iostream>
+#include <stdexcept>
+#include <string>
 using namespace std;
+
+class MyException : public std::logic_error {
+    public:
+    MyException(int code, const std::string& msg) : std::logic_error(msg), err_code(code){
+    }
+
+    private:
+    int err_code;
+
+    protected:
+    //
+};
 
 template <typename T>
 class Fraction{
@@ -10,10 +24,13 @@ class Fraction{
 
     int quotient() const {
         if (den == 0){
-            throw "Denominator can not be 0";
+            throw std::runtime_error("Denominator can not be 0");
         }
-        else if (num > 99) {
-            throw 1; // what if i don't like big numbers
+        // else if (num > 99) {
+        //     throw 1; // what if i don't like big numbers
+        // }
+        else if ((0 > num && den > 0;) || (0 > den && num > 0;)){
+            throw std::logic_error("Don't do that");
         }
 
         return num / den;
@@ -39,12 +56,12 @@ int main(void){
         cout << "End of try block" << endl;
     }
     //catch block
-    catch (const char* ex){
-        cout << "Char* exception was caught: " << ex << endl;
+    catch (const std::logic_error& ex){
+        cout << "Logic error was caught: " << what << endl; //what return message in constructor
     }
     //second catch...
-    catch (int ex){
-        cout << "Int exception was caught with the code: " << ex << endl;
+    catch (const std::runtime_error& ex){
+        cout << "Runtime error was caught with the code: " << what << endl;
     }
     //lmao whatevs
     // catch (...){
